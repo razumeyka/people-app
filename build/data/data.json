@@ -1,0 +1,47 @@
+{
+    "people":[
+        {
+            "id":1,
+            "name":"Stan Patrick",
+            "city":"Gdansk",
+            "avatar":"public/assets/images/man.jpeg",
+            "social_networks":{
+                "facebook":"link",
+                "twitter":"link”"
+            },
+            "company":"Soft solutions",
+            "position":"frontend developer",
+            "isFavourite":false,
+            "isContact":false
+        },
+        {
+            "id":2,
+            "name":"Stan Smith",
+            "city":"Lviv",
+            "avatar":"public/assets/images/man.jpeg",
+            "social_networks":{
+                "facebook":"link",
+                "twitter":"link"
+            },
+            "company":"Soft solutions",
+            "position":"backend developer",
+            "isFavourite":false,
+            "isContact":false
+        },
+        {
+            "id":2,
+            "name":"Caroline Dowson",
+            "city":"Minsk",
+            "avatar":"public/assets/images/girl.jpeg",
+            "social_networks":{
+                "facebook":"link",
+                "twitter":"link"
+            },
+            "company":"Soft solutions",
+            "position":"QA engineer",
+            "isFavourite":false,
+            "isContact":false
+        }
+    ]
+ }
+ 

@@ -3,43 +3,62 @@
         {
             "id":1,
             "name":"Stan Patrick",
-            "city":"Gdansk",
-            "avatar":"public/assets/images/man.jpeg",
+            "city":"Poland, Gdansk",
+            "avatar":"/assets/images/man.jpeg",
             "social_networks":{
                 "facebook":"link",
-                "twitter":"link”"
+                "twitter":"link”",
+                "instagram":"link",
+                "linkedin":"link"
             },
             "company":"Soft solutions",
-            "position":"frontend developer",
+            "position":"Frontend developer",
             "isFavourite":false,
             "isContact":false
         },
         {
             "id":2,
             "name":"Stan Smith",
-            "city":"Lviv",
-            "avatar":"public/assets/images/man.jpeg",
+            "city":"Ukraine, Lviv",
+            "avatar":"/assets/images/man.jpeg",
             "social_networks":{
                 "facebook":"link",
                 "twitter":"link"
             },
             "company":"Soft solutions",
-            "position":"backend developer",
+            "position":"Backend developer",
             "isFavourite":false,
-            "isContact":false
+            "isContact":true
         },
         {
-            "id":2,
+            "id":3,
             "name":"Caroline Dowson",
-            "city":"Minsk",
-            "avatar":"public/assets/images/girl.jpeg",
+            "city":"Belarus, Minsk",
+            "avatar":"/assets/images/girl.jpeg",
             "social_networks":{
-                "facebook":"link",
-                "twitter":"link"
+                "twitter":"link”",
+                "instagram":"link",
+                "linkedin":"link"
             },
             "company":"Soft solutions",
             "position":"QA engineer",
-            "isFavourite":false,
+            "isFavourite":true,
+            "isContact":true
+        },
+        {
+            "id":4,
+            "name":"Caroline Dowson",
+            "city":"Belarus, Minsk",
+            "avatar":"/assets/images/girl.jpeg",
+            "social_networks":{
+                "facebook":"link",
+                "twitter":"link”",
+                "instagram":"link",
+                "linkedin":"link"
+            },
+            "company":"Soft solutions",
+            "position":"QA engineer",
+            "isFavourite":true,
             "isContact":false
         }
     ]

@@ -49,7 +49,7 @@ const Cards = () => {
         setErrorMessage(null);
 
         axios
-            .get('./data/data.json')
+            .get('data/data.json')
             .then( response => {
                 setPeople(response.data.people)
             })

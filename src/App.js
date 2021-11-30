@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from "react-router-dom";
 import styled from 'styled-components';
 
@@ -9,6 +10,8 @@ import PeoplePage from './pages/PeoplePage';
 import FavouritesPage from './pages/FavouritesPage';
 import ContactsPage from './pages/ContactsPage';
 import CompaniesPage from './pages/CompaniesPage';
+
+import * as peopleActions from './app/actions/people';
 
 const Container = styled.div`
   display: flex;
@@ -30,11 +33,29 @@ const Content = styled.main`
 `;
 
 function App() {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const dispatch = useDispatch();
+  const [ isLoading, setIsLoading] = useState(false);
+  const [ errorMessage, setErrorMessage] = useState(null);
+  const [ mobileOpen, setMobileOpen ] = useState(false);
 
   const mobileMenuHandler = () => {
       setMobileOpen(!mobileOpen);
   };
+
+  const loadPeople = useCallback( async () => {
+    setErrorMessage(null);
+    setIsLoading(true);
+    try {
+      await dispatch(peopleActions.fetchPeople());
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
+    setIsLoading(false);
+  }, [dispatch]);
+
+  useEffect( () => {
+    loadPeople();
+  },[dispatch, loadPeople])
 
   return (
     <Container>
@@ -45,8 +66,8 @@ function App() {
           <Route path='/' element={<Navigate to='home' />} />
           <Route path='/home' element={<HomePage />} />
           <Route path='/contacts' element={<ContactsPage />} />
-          <Route path='/favourites' element={<FavouritesPage />} />
-          <Route path='/people' element={<PeoplePage />} />
+          <Route path='/favourites' element={<FavouritesPage isLoading={isLoading} errorMessage={errorMessage} />} />
+          <Route path='/people' element={<PeoplePage isLoading={isLoading} errorMessage={errorMessage} />} />
           <Route path='/companies' element={<CompaniesPage />} />
         </Routes>
       </Content>

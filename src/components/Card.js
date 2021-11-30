@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Avatar, Button, makeStyles } from '@material-ui/core';
 
 import SocialLinks from './UI/SocialLinks';
 import Colors from '../constants/colors';
+import * as peopleActions from '../app/actions/people';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -48,7 +50,30 @@ const City = styled.div`
 
 const Card = (props) => {
     const { person } = props;
+    const [ isContact, setIsContact] = useState(person.isContact);
+    const [ isFavourite, setIsFavourite] = useState(person.isFavourite);
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    const addToContactsHandler = () => {
+        dispatch(peopleActions.addToContacts(person));
+        setIsContact(true);
+    };
+
+    const removeFromContactsHandler = () => {
+        dispatch(peopleActions.removeFromContacts(person));
+        setIsContact(false);
+    };
+
+    const addToFavouritesHandler = () => {
+        dispatch(peopleActions.addToFavourites(person));
+        setIsFavourite(true);
+    };
+
+    const removeFromFavouritesHandler = () => {
+        dispatch(peopleActions.removeFromFavourites(person));
+        setIsFavourite(false);
+    };
 
     return (
         <CardWrapper>
@@ -62,10 +87,39 @@ const Card = (props) => {
             <SocialLinks links={person.social_networks} />
             <City>{person.city}</City>
             <Buttons>
-                { !person.isContact && <Button variant="outlined" size="small" color="primary" className={classes.button} >Add to contacts</Button>}
-                { person.isContact && <Button variant="outlined" size="small" style={{color: 'red', borderColor: 'red'}} className={classes.button}>Delete from contacts</Button>}
-                { !person.isFavourite && <Button variant="outlined" size="small" color="primary" className={classes.button}>Add to favourites</Button>}
-                { person.isFavourite && <Button variant="outlined" size="small" style={{color: 'red', borderColor: 'red'}} className={classes.button}>Delete from favourites</Button>}
+                { !isContact && 
+                    <Button 
+                        variant="outlined" 
+                        size="small" 
+                        color="primary" 
+                        className={classes.button}
+                        onClick={addToContactsHandler}
+                    >Add to contacts</Button>
+                }
+                { isContact && 
+                    <Button 
+                        variant="outlined" 
+                        size="small" 
+                        style={{color: 'red', borderColor: 'red'}} 
+                        className={classes.button}
+                        onClick={removeFromContactsHandler}
+                    >Delete from contacts</Button>}
+                { !isFavourite && 
+                    <Button 
+                        variant="outlined" 
+                        size="small" 
+                        color="primary" 
+                        className={classes.button}
+                        onClick={addToFavouritesHandler}
+                    >Add to favourites</Button>}
+                { isFavourite && 
+                    <Button 
+                        variant="outlined" 
+                        size="small" 
+                        style={{color: 'red', borderColor: 'red'}} 
+                        className={classes.button}
+                        onClick={removeFromFavouritesHandler}
+                    >Delete from favourites</Button>}
             </Buttons>
         </CardWrapper>
     );

@@ -4,7 +4,8 @@ import {
     Facebook, 
     Twitter, 
     Instagram, 
-    LinkedIn } from '@material-ui/icons';
+    LinkedIn 
+} from '@material-ui/icons';
 
 import Colors from '../../constants/colors';
 

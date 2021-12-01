@@ -24,6 +24,9 @@ module.exports = {
 		"jsx-a11y"
     ],
     "rules": {
+        "arrow-body-style": ["error", "as-needed"],
+        "no-case-declarations": "off",
+        "react/display-name": "off",
         "no-plusplus": "off",
         "import/prefer-default-export": "off",
 		"no-console": "warn",

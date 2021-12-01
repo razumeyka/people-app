@@ -1,8 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
-import peopleReducer from './reducers/peopleSlice';
+import { 
+  combineReducers, 
+  createStore, 
+  applyMiddleware 
+} from '@reduxjs/toolkit';
+import ReduxThunk from 'redux-thunk';
+import peopleReducer from './reducers/people';
 
-export const store = configureStore({
-  reducer: {
-    people: peopleReducer,
-  },
+const rootReducer = combineReducers({
+  people: peopleReducer,
 });
+
+export const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

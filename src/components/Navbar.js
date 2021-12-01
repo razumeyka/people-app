@@ -76,7 +76,7 @@ const NavBar = ({ mobile, hideMobileMenu }) => {
     return (
     <nav>
         <NavList>
-            {menuItems.map( item => <NavItem key={new Date().toString}>
+            {menuItems.map( item => <NavItem key={item.title}>
                     <StyledNavLink  
                         className={ navData => navData.isActive ? 'active' : ''}
                         onClick={ () => {

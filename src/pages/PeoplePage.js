@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { useSelector } from 'react-redux';
 import { Grid, Divider } from '@material-ui/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
@@ -8,37 +9,47 @@ import ListButton from '../components/UI/ListButton';
 import SelectField from '../components/UI/SelectField';
 import Cards from '../components/Cards';
 
-const PeoplePage = () => (
-    <div>
-        <Grid 
-            container 
-            wrap="nowrap" 
-            alignItems="center" 
-            justifyContent="space-between" 
-        >
-            <Grid container item alignItems="center" spacing={1}>
-                <Grid item>
-                    <Title title='People' />
+const PeoplePage = memo(({isLoading, errorMessage}) => {
+    const people = useSelector( state => state.people.people );
+
+    return (
+        <div>
+            <Grid 
+                container 
+                wrap="nowrap" 
+                alignItems="center" 
+                justifyContent="space-between" 
+            >
+                <Grid container item alignItems="center" spacing={1}>
+                    <Grid item>
+                        <Title title='People' />
+                    </Grid>
+                    <Grid item>
+                        <GridButton />
+                    </Grid>
+                    <Grid item>
+                        <ListButton />
+                    </Grid>
                 </Grid>
-                <Grid item>
-                    <GridButton />
-                </Grid>
-                <Grid item>
-                    <ListButton />
+                <Grid container nowrap alignItems="center" justifyContent="flex-end" spacing={1}>
+                    <Grid item>
+                        <LocationOnIcon color='primary' />
+                    </Grid>
+                    <Grid item>
+                        <SelectField />
+                    </Grid>
                 </Grid>
             </Grid>
-            <Grid container nowrap alignItems="center" justifyContent="flex-end" spacing={1}>
-                <Grid item>
-                    <LocationOnIcon color='primary' />
-                </Grid>
-                <Grid item>
-                    <SelectField />
-                </Grid>
-            </Grid>
-        </Grid>
-        <Divider />
-        <Cards />
-    </div>
-);
+            <Divider />
+            { isLoading && <p>Loaging</p> }
+            { !isLoading && errorMessage && <p>{errorMessage}</p>}
+            { !isLoading && !errorMessage && 
+                <Cards 
+                    items={people} 
+                />
+            }
+        </div>
+    )
+});
 
 export default PeoplePage;

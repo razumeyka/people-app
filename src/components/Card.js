@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     width: theme.spacing(20),
     height: theme.spacing(20),
-    margin: '0 auto',
   },
   button: {
     width: '100%',
@@ -20,11 +19,20 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
     marginRight: 'auto',
     marginLeft: 'auto',
-  }
+  },
 }));
 
 const CardWrapper = styled.div`
+    display: flex;
+    align-items: center;
     text-align: center;
+    &.list {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    &.grid {
+        flex-direction: column;
+    }
 `
 const Buttons = styled.div`
     display: flex;
@@ -48,8 +56,7 @@ const City = styled.div`
     color: ${Colors.secondary};
 `
 
-const Card = (props) => {
-    const { person } = props;
+const Card = ({ person, list }) => {
     const [ isContact, setIsContact] = useState(person.isContact);
     const [ isFavourite, setIsFavourite] = useState(person.isFavourite);
     const classes = useStyles();
@@ -76,16 +83,20 @@ const Card = (props) => {
     };
 
     return (
-        <CardWrapper>
+        <CardWrapper className={list ? 'list' : 'grid'} >
             <Avatar 
                 alt='avatar' 
                 src={person.avatar} 
                 className={classes.avatar} 
             />
-            <Name>{person.name}</Name>
-            <Position>{person.position}</Position>
-            <SocialLinks links={person.social_networks} />
-            <City>{person.city}</City>
+             <div>
+                <Name>{person.name}</Name>
+                <Position>{person.position}</Position>
+            </div>
+            <div>
+                <SocialLinks links={person.social_networks} />
+                <City>{person.city}</City>
+            </div>
             <Buttons>
                 { !isContact && 
                     <Button 

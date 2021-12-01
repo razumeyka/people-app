@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { useState, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { Grid, Divider } from '@material-ui/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
@@ -7,11 +7,13 @@ import Title from '../components/UI/Title';
 import GridButton from '../components/UI/GridButton';
 import ListButton from '../components/UI/ListButton';
 import SelectField from '../components/UI/SelectField';
-import Cards from '../components/Cards';
+import CardsList from '../components/CardsList';
+import CardsGrid from '../components/CardsGrid';
 
 const FavouritesPage = memo(({isLoading, errorMessage}) => {
     const people = useSelector( state => state.people.people);
     const favourites = people.filter( item => item.isFavourite);
+    const [ isListView, setIsListView ] = useState(false);
 
     return (
         <div>
@@ -26,10 +28,14 @@ const FavouritesPage = memo(({isLoading, errorMessage}) => {
                         <Title title='Favourites' />
                     </Grid>
                     <Grid item>
-                        <GridButton />
+                        <GridButton 
+                            onPress={() => setIsListView(false)}
+                        />
                     </Grid>
                     <Grid item>
-                        <ListButton />
+                        <ListButton 
+                            onPress={() => setIsListView(true)}
+                        />
                     </Grid>
                 </Grid>
                 <Grid container nowrap alignItems="center" justifyContent="flex-end" spacing={1}>
@@ -44,10 +50,11 @@ const FavouritesPage = memo(({isLoading, errorMessage}) => {
             <Divider />
             { isLoading && <p>Loaging</p> }
             { !isLoading && errorMessage && <p>{errorMessage}</p>}
-            { !isLoading && !errorMessage && 
-                <Cards 
-                    items={favourites}
-                />
+            { !isLoading && !errorMessage && !isListView &&
+                <CardsGrid items={favourites} />
+            }
+            { !isLoading && !errorMessage && isListView &&
+                <CardsList items={favourites} />
             }
         </div>
     )

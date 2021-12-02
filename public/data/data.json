@@ -20,7 +20,7 @@
             "id":2,
             "name":"Stan Smith",
             "city":"Ukraine, Lviv",
-            "avatar":"/assets/images/man.jpeg",
+            "avatar":"/assets/images/person.jpeg",
             "social_networks":{
                 "facebook":"link",
                 "twitter":"link"
@@ -47,9 +47,9 @@
         },
         {
             "id":4,
-            "name":"Caroline Dowson",
+            "name":"Hanna Dowson",
             "city":"Belarus, Minsk",
-            "avatar":"/assets/images/girl.jpeg",
+            "avatar":"/assets/images/person-girl.jpeg",
             "social_networks":{
                 "facebook":"link",
                 "twitter":"link”",

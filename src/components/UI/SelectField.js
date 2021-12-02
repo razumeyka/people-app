@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { 
-    MenuItem, 
     Select, 
     FormControl, 
     makeStyles } from '@material-ui/core';
+
+import * as peopleActions from '../../app/actions/people';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -16,20 +18,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SelectField = () => {
-    const [city, setCity] = useState('Lviv');
+    const dispatch = useDispatch();
+    const cities = useSelector( state => state.people.cities );
+    const [city, setCity] = useState('');
     const classes = useStyles();
+
+    const changeCityHandle = (event) => {
+        setCity(event.target.value);
+        dispatch(peopleActions.filterPeople(event.target.value))
+    };
 
     return (
         <FormControl className={classes.formControl}>
             <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                native
                 value={city}
-                onChange={ item => setCity(item)}
+                onChange={changeCityHandle}
+                inputProps={{
+                    name: 'city',
+                    id: 'city-native-simple',
+                }}
             >
-                <MenuItem value='Lviv'>Ukraine, Lviv</MenuItem>
-                <MenuItem value='Minks'>Belarus, Minks</MenuItem>
-                <MenuItem value='Gdansk'>Poland, Gdansk</MenuItem>
+                <option aria-label="None" value="" />
+                {cities.map( item => (
+                    <option key={item} value={item}>{item}</option>
+                ))}
             </Select>
         </FormControl>
     );

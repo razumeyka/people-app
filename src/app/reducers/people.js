@@ -3,23 +3,50 @@ import {
     ADD_TO_CONTACTS,
     REMOVE_FROM_CONTACTS,
     ADD_TO_FAVOURITES,
-    REMOVE_FROM_FAVOURITES
+    REMOVE_FROM_FAVOURITES,
+    FILTER_PEOPLE 
 } from "../actions/people";
  
 const initialState = {
+    items: [],
     people: [],
     contacts: [],
     favourites: [],
+    cities: [],
 };
 
 export default (state = initialState, action={}) => {
     switch (action.type) {
-        case SET_PEOPLE: 
+        case SET_PEOPLE:
+            const citiesList = () => {
+                const cities = action.people.map(item => item.city);
+                const result = [];
+
+                cities.forEach( city => {
+                    if (!result.includes(city)) {
+                        result.push(city);
+                    }
+                });
+
+                return result;
+            };
+
             return {
                 ...state,
+                items: action.people,
                 people: action.people,
                 contacts: action.people.filter( item => item.isContact),
                 favourites: action.people.filter( item => item.isFavourite),
+                cities: citiesList()
+            }
+        case FILTER_PEOPLE:
+            const filteredPeople = state.items.filter( item => (
+                item.city === action.city
+            ));
+
+            return {
+                ...state,
+                people: filteredPeople,
             }
         case ADD_TO_CONTACTS:
             const newContact = action.person;

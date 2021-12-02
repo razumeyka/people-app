@@ -40,9 +40,14 @@ export default (state = initialState, action={}) => {
                 cities: citiesList()
             }
         case FILTER_PEOPLE:
-            const filteredPeople = state.items.filter( item => (
-                item.city === action.city
-            ));
+            let filteredPeople;
+            if (action.city !== 'all') {
+                filteredPeople = state.items.filter( item => (
+                    item.city === action.city
+                ));
+            } else {
+                filteredPeople = state.items;
+            }
 
             return {
                 ...state,

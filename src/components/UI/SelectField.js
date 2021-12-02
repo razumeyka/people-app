@@ -39,7 +39,7 @@ const SelectField = () => {
                     id: 'city-native-simple',
                 }}
             >
-                <option aria-label="None" value="" />
+                <option value="all">All people</option>
                 {cities.map( item => (
                     <option key={item} value={item}>{item}</option>
                 ))}

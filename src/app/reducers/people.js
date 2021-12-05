@@ -4,7 +4,8 @@ import {
     REMOVE_FROM_CONTACTS,
     ADD_TO_FAVOURITES,
     REMOVE_FROM_FAVOURITES,
-    FILTER_PEOPLE 
+    FILTER_PEOPLE,
+    SEARCH_PEOPLE
 } from "../actions/people";
  
 const initialState = {
@@ -27,7 +28,6 @@ export default (state = initialState, action={}) => {
                         result.push(city);
                     }
                 });
-
                 return result;
             };
 
@@ -38,6 +38,21 @@ export default (state = initialState, action={}) => {
                 contacts: action.people.filter( item => item.isContact),
                 favourites: action.people.filter( item => item.isFavourite),
                 cities: citiesList()
+            }
+        case SEARCH_PEOPLE:
+            const searchName = action.name.toLowerCase();
+            let foundPeople;
+            if (action.name !== '') {
+                foundPeople = state.items.filter( item => (
+                    item.name.toLowerCase().includes(searchName)
+                ));
+            } else {
+                foundPeople= state.items;
+            }
+
+            return {
+                ...state,
+                people: foundPeople,
             }
         case FILTER_PEOPLE:
             let filteredPeople;

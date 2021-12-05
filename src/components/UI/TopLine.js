@@ -1,10 +1,12 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Avatar, IconButton, makeStyles } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import styled from 'styled-components';
 
 import InputField from './InputField';
+import * as peopleActions from '../../app/actions/people';
 
 const useStyles = makeStyles((theme) => ({
     avatar: {
@@ -54,6 +56,12 @@ const RightCol = styled.div`
 
 const TopLine = ({ onMobileMenuToggle }) => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    const searchHandler = (event) => {
+        dispatch(peopleActions.searchPeople(event.target.value))
+    }
+
     return (
         <>
             <IconButton
@@ -66,7 +74,9 @@ const TopLine = ({ onMobileMenuToggle }) => {
                 <MenuIcon color="primary" />
             </IconButton>
             <Container>
-                <InputField />
+                <InputField 
+                    onChange={searchHandler}
+                />
                 <RightCol>
                     <div>
                         <div>Welcome,</div>

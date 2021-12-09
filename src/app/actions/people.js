@@ -6,6 +6,7 @@ export const REMOVE_FROM_CONTACTS = 'REMOVE_FROM_CONTACTS';
 export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES';
 export const REMOVE_FROM_FAVOURITES = 'REMOVE_FROM_FAVOURITES';
 export const FILTER_PEOPLE = 'FILTER_PEOPLE';
+export const SEARCH_PEOPLE = 'SEARCH_PEOPLE';
 
 export const fetchPeople = () => (
     dispatch => {
@@ -55,5 +56,12 @@ export const filterPeople = item => (
     {
         type: FILTER_PEOPLE , 
         city: item 
+    }
+);
+
+export const searchPeople = item => (
+    {
+        type: SEARCH_PEOPLE , 
+        name: item 
     }
 );

@@ -37,28 +37,26 @@ const useStyles = makeStyles( (theme) => ({
     },
 }));
 
-const Cards = ({ items }) => {
-    const classes = useStyles();
+const CardsGrid = ({ items }) => {
+    const classes = useStyles(); 
 
     return (
-        <div>
-            <Grid container spacing={3} className={classes.cardsContainer}>
-                { items.map( person => (
-                    <Grid 
-                        item
-                        key={person.id} 
-                        xs={12} 
-                        md={6} 
-                        lg={4}
-                        xl={3}
-                        className={classes.cardItem}
-                    >
-                        <Card person={person} />
-                    </Grid>
-                ))}
-            </Grid>
-        </div>
+        <Grid container spacing={3} className={classes.cardsContainer}>
+            { items.map( person => (
+                <Grid 
+                    item
+                    key={person.id} 
+                    xs={12} 
+                    md={6} 
+                    lg={4}
+                    xl={3}
+                    className={classes.cardItem}
+                >
+                    <Card person={person} />
+                </Grid>
+            ))}
+        </Grid>
     );
 };
 
-export default Cards;
+export default CardsGrid;

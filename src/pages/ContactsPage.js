@@ -12,7 +12,7 @@ import CardsGrid from '../components/CardsGrid';
 import CreateContact from '../components/forms/CreateContact';
 
 const ContactsPage = memo(({isLoading, errorMessage}) => {
-    const contacts = useSelector( state => state.people.people);
+    const contacts = useSelector( state => state.people.contacts);
     const [ isListView, setIsListView ] = useState(false);
 
     return (

@@ -11,8 +11,7 @@ import CardsList from '../components/CardsList';
 import CardsGrid from '../components/CardsGrid';
 
 const FavouritesPage = memo(({isLoading, errorMessage}) => {
-    const people = useSelector( state => state.people.people);
-    const favourites = people.filter( item => item.isFavourite);
+    const favourites = useSelector( state => state.people.favourites);
     const [ isListView, setIsListView ] = useState(false);
 
     return (

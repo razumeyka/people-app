@@ -1,5 +1,7 @@
 import { 
     SET_PEOPLE,
+    ADD_TO_PEOPLE,
+    REMOVE_FROM_PEOPLE,
     ADD_TO_CONTACTS,
     REMOVE_FROM_CONTACTS,
     ADD_TO_FAVOURITES,
@@ -38,6 +40,39 @@ export default (state = initialState, action={}) => {
                 contacts: action.people.filter( item => item.isContact),
                 favourites: action.people.filter( item => item.isFavourite),
                 cities: citiesList()
+            }
+        case ADD_TO_PEOPLE:
+            const newPerson = action.person;
+            const updatedCities = [...state.cities];
+            const updatedPeople = [...state.items];
+
+            console.log(newPerson);
+
+            updatedCities.push(newPerson.city);
+            updatedPeople.push(newPerson);
+    
+            return {
+                ...state,
+                items: updatedPeople,
+                people: updatedPeople,
+                contacts: updatedPeople.filter( item => item.isContact),
+                favourites: updatedPeople.filter( item => item.isFavourite),
+                cities: updatedCities
+            }
+        case REMOVE_FROM_PEOPLE:
+            const removedPerson = action.person;
+
+            const removedPeople = [...state.items];
+            const removedIndex = state.items.findIndex( item => item.id === removedPerson.id);
+
+            removedPeople.splice(removedIndex, 1);
+
+            return {
+                ...state,
+                items: removedPeople,
+                people: removedPeople,
+                contacts: removedPeople.filter( item => item.isContact),
+                favourites: removedPeople.filter( item => item.isContact)
             }
         case SEARCH_PEOPLE:
             const searchName = action.name.toLowerCase();

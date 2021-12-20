@@ -9,10 +9,10 @@ import ListButton from '../components/UI/ListButton';
 import SelectField from '../components/UI/SelectField';
 import CardsList from '../components/CardsList';
 import CardsGrid from '../components/CardsGrid';
+import CreateContact from '../components/forms/CreateContact';
 
 const ContactsPage = memo(({isLoading, errorMessage}) => {
-    const people = useSelector( state => state.people.people);
-    const contacts = people.filter( item => item.isContact);
+    const contacts = useSelector( state => state.people.people);
     const [ isListView, setIsListView ] = useState(false);
 
     return (
@@ -48,6 +48,7 @@ const ContactsPage = memo(({isLoading, errorMessage}) => {
                 </Grid>
             </Grid>
             <Divider />
+            <CreateContact />
             { isLoading && <p>Loaging</p> }
             { !isLoading && errorMessage && <p>{errorMessage}</p>}
             { !isLoading && !errorMessage && !isListView &&

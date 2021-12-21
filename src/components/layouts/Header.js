@@ -5,8 +5,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import styled from 'styled-components';
 
-import InputField from './InputField';
-import * as peopleActions from '../../app/actions/people';
+import InputField from '../fields/InputField';
+import * as peopleActions from '../../store/actions/people';
 
 const useStyles = makeStyles((theme) => ({
     avatar: {
@@ -54,7 +54,7 @@ const RightCol = styled.div`
     }
 `;
 
-const TopLine = ({ onMobileMenuToggle }) => {
+const Header = ({ onMobileMenuToggle }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
@@ -96,4 +96,4 @@ const TopLine = ({ onMobileMenuToggle }) => {
     )
 };
 
-export default TopLine;
+export default Header;

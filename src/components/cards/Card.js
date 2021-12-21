@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Avatar, Button, makeStyles } from '@material-ui/core';
 
-import SocialLinks from './UI/SocialLinks';
-import Colors from '../constants/colors';
-import * as peopleActions from '../app/actions/people';
+import SocialLinks from './SocialLinks';
+import Colors from '../../constants/colors';
+import * as peopleActions from '../../store/actions/people';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {

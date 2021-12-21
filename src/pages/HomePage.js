@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Title from '../components/UI/Title';
+import Title from '../components/layouts/Title';
 
 const HomePage = () => (
     <Title title='Home' />

@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Button, makeStyles } from '@material-ui/core';
 import styled from 'styled-components';
 
-import InputField from '../UI/InputField';
+import InputField from '../fields/InputField';
 import Colors from '../../constants/colors';
-import * as peopleActions from '../../app/actions/people';
+import * as peopleActions from '../../store/actions/people';
 
 const Form = styled.div`
     display: flex;

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Grid, Avatar, IconButton, makeStyles } from '@material-ui/core';
 import { Settings, ExitToApp, Close } from '@material-ui/icons';
 
-import NavBar from './Navbar';
-import Colors from '../constants/colors';
+import NavBar from '../navbar/Navbar';
+import Colors from '../../constants/colors';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {

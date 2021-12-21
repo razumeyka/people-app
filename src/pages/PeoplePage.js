@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 import { Grid, Divider } from '@material-ui/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-import Title from '../components/UI/Title';
+import Title from '../components/layouts/Title';
 import GridButton from '../components/UI/GridButton';
 import ListButton from '../components/UI/ListButton';
-import SelectField from '../components/UI/SelectField';
-import CardsGrid from '../components/CardsGrid';
-import CardsList from '../components/CardsList';
+import SelectField from '../components/fields/SelectField';
+import CardsGrid from '../components/cards/CardsGrid';
+import CardsList from '../components/cards/CardsList';
 
 const PeoplePage = memo(({isLoading, errorMessage}) => {
     const people = useSelector( state => state.people.people );
@@ -37,7 +37,7 @@ const PeoplePage = memo(({isLoading, errorMessage}) => {
                         />
                     </Grid>
                 </Grid>
-                <Grid container nowrap alignItems="center" justifyContent="flex-end" spacing={1}>
+                <Grid container wrap="nowrap" alignItems="center" justifyContent="flex-end" spacing={1}>
                     <Grid item>
                         <LocationOnIcon color='primary' />
                     </Grid>

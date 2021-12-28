@@ -49,27 +49,27 @@ const NavBar = ({ mobile, hideMobileMenu }) => {
         {
             path: '/home',
             title: 'Home',
-            icon: <HomeOutlined color='white' />,
+            icon: <HomeOutlined style={{ fill: 'white' }} />,
         },
         {
             path: '/contacts',
             title: 'Contacts',
-            icon: <ContactsOutlined color='white' />,
+            icon: <ContactsOutlined style={{ fill: 'white' }} />,
         },
         {
             path: '/favourites',
             title: 'Favourites',
-            icon: <FavoriteBorderOutlined color='white' />,
+            icon: <FavoriteBorderOutlined style={{ fill: 'white' }} />,
         },
         {
             path: '/people',
             title: 'People',
-            icon: <PermIdentityOutlined color='white' />,
+            icon: <PermIdentityOutlined style={{ fill: 'white' }} />,
         },
         {
             path: '/companies',
             title: 'Companies',
-            icon:  <ListAltOutlined color='white' />,
+            icon:  <ListAltOutlined style={{ fill: 'white' }} />,
         }
     ];
 

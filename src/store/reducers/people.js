@@ -46,8 +46,6 @@ export default (state = initialState, action={}) => {
             const updatedCities = [...state.cities];
             const updatedPeople = [...state.items];
 
-            console.log(newPerson);
-
             updatedCities.push(newPerson.city);
             updatedPeople.push(newPerson);
     

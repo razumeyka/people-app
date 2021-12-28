@@ -5,7 +5,7 @@ import {
     FormControl, 
     makeStyles } from '@material-ui/core';
 
-import * as peopleActions from '../../app/actions/people';
+import * as peopleActions from '../../store/actions/people';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {

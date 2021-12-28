@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     width: '100%',
-    maxWidth: '230px',
+    maxWidth: '240px',
     borderRadius: '20px',
     marginBottom: theme.spacing(1),
     marginRight: 'auto',
@@ -82,6 +82,10 @@ const Card = ({ person, list }) => {
         setIsFavourite(false);
     };
 
+    const removeFromPeopleHandler = () => {
+        dispatch(peopleActions.removeFromPeople(person));
+    }
+
     return (
         <CardWrapper className={list ? 'list' : 'grid'} >
             <Avatar 
@@ -131,6 +135,13 @@ const Card = ({ person, list }) => {
                         className={classes.button}
                         onClick={removeFromFavouritesHandler}
                     >Delete from favourites</Button>}
+                <Button 
+                    variant="outlined" 
+                    size="small" 
+                    style={{color: 'red', borderColor: 'red'}} 
+                    className={classes.button}
+                    onClick={removeFromPeopleHandler}
+                >Delete person</Button>
             </Buttons>
         </CardWrapper>
     );

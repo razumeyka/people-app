@@ -75,6 +75,10 @@ const TopLine = ({ onMobileMenuToggle }) => {
             </IconButton>
             <Container>
                 <InputField 
+                    id='outlined-basic'
+                    type='search'
+                    label='Search' 
+                    variant='outlined' 
                     onChange={searchHandler}
                 />
                 <RightCol>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
 
-const InputField = ({ onChange }) => (
+const InputField = ({ id, type, label, variant, onChange }) => (
     <TextField 
-        id='outlined-basic'
-        type='search'
-        label='Search' 
-        variant='outlined' 
+        id={id}
+        type={type}
+        label={label} 
+        variant={variant}
         onChange={onChange}
     />
 );

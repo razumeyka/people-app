@@ -94,7 +94,7 @@ const Card = ({ person, list }) => {
                 className={classes.avatar} 
             />
              <div>
-                <Name>{person.name}</Name>
+                <Name>{person.username}</Name>
                 <Position>{person.position}</Position>
             </div>
             <div>

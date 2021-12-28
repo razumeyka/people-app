@@ -2,7 +2,7 @@
     "people":[
         {
             "id":1,
-            "name":"Stan Patrick",
+            "username":"Stan Patrick",
             "city":"Poland, Gdansk",
             "avatar":"/assets/images/man.jpeg",
             "social_networks":{
@@ -18,7 +18,7 @@
         },
         {
             "id":2,
-            "name":"Stan Smith",
+            "username":"Stan Smith",
             "city":"Ukraine, Lviv",
             "avatar":"/assets/images/person.jpeg",
             "social_networks":{
@@ -32,7 +32,7 @@
         },
         {
             "id":3,
-            "name":"Caroline Dowson",
+            "username":"Caroline Dowson",
             "city":"Belarus, Minsk",
             "avatar":"/assets/images/girl.jpeg",
             "social_networks":{
@@ -47,7 +47,7 @@
         },
         {
             "id":4,
-            "name":"Hanna Dowson",
+            "username":"Hanna Dowson",
             "city":"Belarus, Minsk",
             "avatar":"/assets/images/person-girl.jpeg",
             "social_networks":{

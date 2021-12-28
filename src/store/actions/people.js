@@ -23,7 +23,7 @@ export const fetchPeople = () => (
                     if (Object.prototype.hasOwnProperty.call(values, i)) {
                         loadedPeople.push({
                             id: i,
-                            name: values[i].name,
+                            username: values[i].username,
                             city: values[i].city,
                             avatar: values[i].avatar,
                             social_networks: {
@@ -166,6 +166,6 @@ export const filterPeople = item => (
 export const searchPeople = item => (
     {
         type: SEARCH_PEOPLE , 
-        name: item 
+        username: item 
     }
 );
